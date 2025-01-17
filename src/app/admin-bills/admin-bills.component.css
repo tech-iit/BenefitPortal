@@ -1,0 +1,138 @@
+.view-bill-container {
+  padding: 20px;
+  background-color: #dee9ff;
+  min-height: 100vh;
+}
+
+.view-bill-container h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+.view-bill-container .product-listing {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.view-bill-container .card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: left;
+  padding: 20px;
+  width: 90%;
+  max-width: 350px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.view-bill-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.view-bill-container .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.view-bill-container .modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.view-bill-container .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-bill-container .modal-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.view-bill-container .close-btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #333;
+}
+
+.view-bill-container .modal-body {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.view-bill-container .modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.view-bill-container .btn {
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 48%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-bill-container .btn-success {
+  background-color: #28a745;
+  border: none;
+  color: white;
+}
+
+.view-bill-container .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+.view-bill-container .btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.view-bill-container .btn-success:hover {
+  background-color: #218838;
+}
+
+.view-bill-container .btn-danger:hover {
+  background-color: #c82333;
+}
+.view-bill-container .btn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.view-bill-container .card-text .badge {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+}

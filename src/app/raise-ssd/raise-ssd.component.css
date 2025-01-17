@@ -1,0 +1,166 @@
+body{
+    background-color: #dee9ff;
+    padding: 25.2px;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.registration-form{
+    background-color: #dee9ff;
+	padding: 20px 0;
+}
+
+.registration-form form{
+    background-color: #fff;
+    max-width: 425px;
+    margin: auto;
+    padding: 50px 30px;
+    border-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.registration-form .form-icon{
+	text-align: center;
+    background-color: #5891ff;
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 30px;
+    line-height: 100px;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+}
+
+.registration-form .create-account{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    width: 370px;
+}
+
+.registration-form .social-media{
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #9fadca;
+    border-top: 1px solid #dee9ff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .social-icons{
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+
+.registration-form .social-icons a{
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.registration-form .social-icons a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+#Eligibility, #Category{
+    height: fit-content;
+}
+
+.custom-size{
+    height: 100px;
+    width: 100%;
+}
+
+.ssd-history {
+    background-color: #dee9ff;
+    padding: 32px;
+}
+
+.ssd-history .ssd-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ssd-history .ssd-card {
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: white;
+}
+
+.ssd-history .card-body {
+    padding: 20px;
+}
+
+.ssd-history .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ssd-history .card-text {
+    font-size: 1rem;
+}
+
+.ssd-history .text-muted {
+    font-size: 0.9rem;
+}
+
+.ssd-history .text-success {
+    color: green;
+    font-weight: bold;
+}
+
+.ssd-history .text-danger {
+    color: red;
+    font-weight: bold;
+}
+
+.ssd-history .text-warning {
+    color: orange;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .ssd-history .ssd-card {
+        width: 100%;
+    }
+}
+
+
+footer {
+    margin-top: auto; /* This will push the footer to the bottom */
+    background-color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,43 @@
+<div class="parent-container">
+  <div class="benefit-container">
+    
+    <div class="fullscreen-center">
+      <div class="card">
+        <i  style="text-align: left; display: block; margin-left: 10px;">{{ benefit.id }}</i>
+        <i class="card-title text-center">{{ benefit.name }}</i>
+        <img [src]="benefit.path" class="card-img-top" />
+        <div class="card-body">
+          <div class="text-center">
+            <button class="btn btn-primary mt-0" (click)="availBenefit()">Avail Benefit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="benefit-description">
+      <p style="padding: 0 100px;" class="card-text text-center">Benefit description: {{ benefit.description }}</p>
+      <div class="gradient-line"></div>
+    </div>
+  </div>
+  <div class="availed-benefits mt-0">
+    
+    <h3 class="text-center">Availed Benefits</h3>
+    <div class="benefit-cards-container">
+      <div *ngFor="let availedBenefit of availedBenefits" class="card benefit-card">
+        <i>{{ availedBenefit.id }}</i>
+        <i class="text-center">{{ availedBenefit.name + '\n' }}</i>
+        <img
+          [src]="availedBenefit.path"
+          [alt]="availedBenefit.id"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <p class="card-text">
+            {{ availedBenefit.description | slice: 0:20 }}
+            {{ availedBenefit.description.length > 1 ? '...' : '' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="login-form">
+    <div class="logo">
+      <img src="assets/login_logo.png" alt="Logo">
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <span class = "fa fa-user"></span>
+        <input type="text" placeholder="SAP ID" [(ngModel)]="username" name="username">
+      </div>
+      <div class="input-container">
+        <span class = "fa fa-lock"></span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+      </div>
+      <button type="submit">GET STARTED</button>
+      <div class="options">
+        <a (click)="openForgotPasswordDialog()" >Forgot Password?</a>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="dialog-overlay" *ngIf="showForgotPasswordDialog">
+    <div class="dialog-container">
+      <h2>Forgot Password</h2>
+      <div *ngIf="!otpSent">
+        <label for="employeeId">SAP ID</label>
+        <input id="employeeId" type="text" [(ngModel)]="forgotPasswordEmployeeId" />
+        <button (click)="sendOtp()">Send OTP</button>
+      </div>
+  
+      <div *ngIf="otpSent && !otpVerified">
+        <label for="otp">Enter OTP:</label>
+        <input id="otp" type="text" [(ngModel)]="enteredOtp" />
+        <button (click)="verifyOtp()">Verify OTP</button>
+      </div>
+      
+      <div *ngIf="otpVerified">
+        <label for="newPassword">New Password:</label>
+        <input id="newPassword" type="password" [(ngModel)]="newPassword" />
+        <button (click)="resetPassword()">Reset Password</button>
+      </div>
+  
+      <button class="close-button" (click)="closeForgotPasswordDialog()">Close</button>
+    </div>
+  </div>
+  
+</body>
+</html>

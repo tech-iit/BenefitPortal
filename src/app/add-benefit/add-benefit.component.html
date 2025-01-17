@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Benefit Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<div *ngIf="responseMessage" 
+     [ngClass]="{'success-message': responseStatus === true, 'error-message': responseStatus === false}" 
+     class="response-message">
+  {{ responseMessage }}
+</div>
+
+<body >
+
+     
+    <div class="registration-form">
+        <!-- Display success or error message -->
+        <form #addBenefitForm="ngForm" (ngSubmit)="onSubmit(addBenefitForm)">
+            <div class="form-icon">
+                <span><i class="bi bi-gift"></i></span>
+
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    class="form-control item"
+                    id="Name"
+                    placeholder="Benefit Name"
+                    required
+                    name="name"
+                    [(ngModel)]="benefitData.name"
+                    #nameControl="ngModel"
+                    required>
+                <span *ngIf="beforeformsubmit&&nameControl.touched && nameControl.invalid" class="text-danger">Benefit name is required</span>
+            </div>
+            <div class="form-group">
+                <input
+                    type="textbox"
+                    class="form-control item"
+                    id="Description"
+                    placeholder="Description"
+                    required
+                    name="description"
+                    [(ngModel)]="benefitData.description"
+                    #descriptionControl="ngModel"
+                    required>
+                    <span *ngIf="beforeformsubmit&&descriptionControl.touched && descriptionControl.invalid" class="text-danger">Description is required</span>
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    class="form-control item"
+                    id="Path"
+                    placeholder="Image Path"
+                    required
+                    name="imagePath"
+                    [(ngModel)]="benefitData.imagePath"
+                    #imagePathControl = "ngModel">
+                    <span *ngIf="beforeformsubmit&&imagePathControl.touched && imagePathControl.invalid" class="text-danger">ImagePath is required</span>
+            </div>
+            <div class="form-group">
+                <select
+                    id="Category"
+                    class="form-select form-control item"
+                    required="required"
+                    name="category"
+                    [(ngModel)]="benefitData.category">
+                    <option value="" selected disabled>--Category--</option>
+                    <option>Health</option>
+                    <option>Sports</option>
+                    <option>Education</option>
+                    <option>Commute</option>
+                    <option>Travel</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select
+                    id="Eligibility"
+                    class="form-select form-control item"
+                    required="required"
+                    name="eligibility"
+                    [(ngModel)]="benefitData.eligibility">
+                    <option value="" selected disabled>--Min Eligibility Criteria--</option>
+                    <option>E0</option>
+                    <option>E1</option>
+                    <option>E2</option>
+                    <option>E3</option>
+                    <option>E4</option>
+                    <option>E5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block create-account" [ngClass]="{'not-allowed': addBenefitForm.invalid}" [disabled]="addBenefitForm.invalid">Add Benefit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<app-footer></app-footer>

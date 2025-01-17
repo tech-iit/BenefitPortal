@@ -1,0 +1,58 @@
+<div class="homepage-container">
+  <div class="parent-container">
+    <!-- Categories Section -->
+    <section class="categories mx-3">
+      <h2 class="text-center">Categories</h2>
+      <div class="row">
+        <div class="col-4 col-md-4 col-lg-2 mb-2" *ngFor="let category of categories">
+          <div class="card category-card h-100 text-center" (click)="filterByCategory(category.name)">
+            <img [src]="category.image" alt="{{ category.name }}" class="category-image card-img-top img-fluid mx-auto" />
+            <div class="card-body">
+              <h5 class="card-title">{{ category.name }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Listing Section -->
+    <section class="product-listing">
+      <h2 class="h5 text-center">Benefits</h2>
+      <div class="row">
+        <div class="col-md-4 col-lg-3 mb-4" *ngFor="let x of filteredProducts">
+          <div class="card product-card h-100">
+            <div class="product-image-container text-center p-3">
+              <img [src]="x.ImagePath" alt="{{ x.Name }}" class="card-img-top img-fluid" />
+            </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <i class="card-title mb-0">{{ x.Name }}</i>
+                <div class="bookmark-container position-relative">
+                  <button class="btn p-0 border-0 bg-transparent" (click)="toggleBookmark(x.Id)">
+                    <i class="bi" [ngClass]="x.IsBookmarked ? 'bi-heart-fill text-danger' : 'bi-heart text-secondary'"></i>
+                  </button>
+                  <div *ngIf="showMessage && idstored == x.Id" class="position-absolute bg-success text-white p-1 rounded" style="top: -30px; right: 0; animation: fadeInOut 1.5s;">
+                    Bookmarked!
+                  </div>
+                </div>
+              </div>
+                <button [routerLink]="'/benefitdetails'" [queryParams]="{ id: x.Id, name: x.Name, description: x.Description, path: x.ImagePath }"class="btn btn-primary w-100 mt-2" (click)="access()">View Benefit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Subscribe Section -->
+  <div class="subscribe-container">
+    <div class="subscribe-content">
+      <input type="text" value="{{ emailid }}" readonly class="subscribe-input text-center" />
+      <button *ngIf="buttonsubscribe" class="subscribe-button" (click)="subscribebyEmailId(emailid)">Subscribe</button>
+      <button *ngIf="buttonUnsubscribe" class="subscribe-button" (click)="UnsubscribebyEmailId(emailid)">UnSubscribe</button>
+    </div>
+  </div>
+  </div>
+
+  <app-footer></app-footer>
+

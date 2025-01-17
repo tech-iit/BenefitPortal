@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="registration-form">
+        <form #feedbackForm="ngForm" (ngSubmit)="submitFeedback(feedbackForm)">
+            <div class="form-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"></path>
+                </svg>
+            </div>
+           
+            <div class="form-group">
+                <input type="number" class="form-control item" id="benefitId" placeholder="Benefit Id" required [(ngModel)]="benefitId" name="benefitId" #benefitIdControl="ngModel">
+                <span *ngIf="benefitIdControl.touched && benefitIdControl.invalid" class="text-danger">Benefit Id is required</span>
+                <span *ngIf="errorStatus" class="text-danger">Invalid Benefit Id</span>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control item custom-size" id="review" placeholder="Provide your feedback here!" required [(ngModel)]="feedbackText" name="feedbackText" #feedbackTextControl="ngModel"></textarea>
+                <span *ngIf="feedbackTextControl.touched && feedbackTextControl.invalid" class="text-danger">Description is required</span>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control item custom-size" id="suggestion" placeholder="Provide suggestions here!" [(ngModel)]="suggestion" name="suggestion"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block create-account" [disabled]="!benefitId || !feedbackText">Submit</button>
+            </div>
+        </form>
+
+        <div *ngIf="submissionStatus" class="alert alert-success alert-floating">
+            Feedback submitted successfully!
+        </div>
+        <div *ngIf="errorStatus" class="alert alert-danger alert-floating">
+            An error occurred while submitting feedback!
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

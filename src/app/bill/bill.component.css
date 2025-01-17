@@ -1,0 +1,155 @@
+.fullscreen-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    padding: 20px;
+    padding-top: 40px;
+    background-color: #dee9ff;
+}
+  
+  .card {
+    width: 18rem;
+    margin: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .card-img-top {
+    width: 100%;           /* Ensure the image takes up the full width */
+  height: 200px;         /* Fixed height for the image */
+  object-fit: contain;   /* Ensure the whole image is visible */
+  object-position: center; 
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+  
+  .mt-3 {
+    margin-top: 15px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-success {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .mt-4 {
+    margin-top: 30px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  /* Dialog Overlay and Styling */
+  .dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Background blur */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Make sure it's on top of other content */
+  }
+  
+  .dialog-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dialog-box form {
+    margin-top: 15px;
+  }
+  
+  .dialog-box .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .dialog-box .btn {
+    width: 45%;
+    margin-right: 10px;
+  }
+  
+  .dialog-box .btn-secondary {
+    background-color: #ddd;
+  }
+  
+
+  .reimbursement-history {
+    /* margin-top: 50px; */
+    background-color: #dee9ff;
+    padding: 32px;
+  }
+  
+  .reimbursement-history .benefit-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Align cards horizontally and center them */
+  }
+  
+  .reimbursement-history .card {
+    margin: 10px;
+    width: 250px;  /* Set a fixed width for the cards */
+  }
+  
+  .reimbursement-history .card-body {
+    padding: 20px;
+  }
+  
+  .reimbursement-history .benefit-card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .reimbursement-history .card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .reimbursement-history .card-text {
+    font-size: 1rem;
+  }
+  
+  .reimbursement-history .text-muted {
+    font-size: 0.9rem;
+  }
+  
+  .reimbursement-history .text-success {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .reimbursement-history .benefit-card img {
+    max-width: 100%; /* Ensure the image does not overflow */
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .reimbursement-history .card {
+      width: 100%;  /* Make cards take full width on smaller screens */
+    }
+  }
+  

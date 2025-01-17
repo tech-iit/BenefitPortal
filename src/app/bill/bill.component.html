@@ -1,0 +1,128 @@
+<div class="fullscreen-center">
+  <!-- Cell Phone Bill Reimbursement Card -->
+  <div class="card">
+    <img [src]="cellPhoneBill.path" class="card-img-top" />
+    <div class="card-body">
+      <h3 class="card-title text-center">{{ cellPhoneBill.id }}</h3>
+      <p class="card-text text-center">{{ cellPhoneBill.description }}</p>
+      <div class="text-center">
+        <button 
+          class="btn btn-primary mt-3" 
+          (click)="openDialog('cellPhoneBill')" 
+          [disabled]="cellPhoneBill.status === 'Requested' || cellPhoneBill.status === 'Approved'"
+        >
+          Request Reimbursement
+        </button>
+        <div *ngIf="cellPhoneBill.status=='Requested'" class="mt-3 text-success">
+          <span [ngClass]="{
+            'text-warning': cellPhoneBill.status === 'Requested'
+          }">
+          Status: {{cellPhoneBill.status }}
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WiFi Reimbursement Card -->
+  <div class="card mt-3">
+    <img [src]="wifiReimbursement.path" class="card-img-top" />
+    <div class="card-body">
+      <h3 class="card-title text-center">{{ wifiReimbursement.id }}</h3>
+      <p class="card-text text-center">{{ wifiReimbursement.description }}</p>
+      <div class="text-center">
+        <button 
+          class="btn btn-primary mt-3" 
+          (click)="openDialog('wifiReimbursement')" 
+          [disabled]="wifiReimbursement.status === 'Requested' || wifiReimbursement.status === 'Approved'"
+        >
+          Request Reimbursement
+        </button>
+        <div *ngIf="wifiReimbursement.status=='Requested'" class="mt-3 text-success">
+          <span [ngClass]="{
+            'text-warning': wifiReimbursement.status === 'Requested'
+          }">
+          Status: {{wifiReimbursement.status }}
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dialog Box for Form -->
+<div class="dialog-overlay" *ngIf="dialogVisible">
+  <div class="dialog-box">
+    <h3 class="text-center">{{ selectedBenefit.id }} Reimbursement Form</h3>
+    <form #billForm="ngForm" (ngSubmit)="submitForm(billForm)" novalidate>
+      <div class="form-group">
+        <label for="amount">Reimbursement Amount</label>
+        <input
+          id="amount"
+          type="number"
+          [(ngModel)]="formData.amount" 
+          name="amount"
+          class="form-control"
+          #amountControl="ngModel"
+          required
+        />
+        <span *ngIf="amountControl.touched && amountControl.invalid || amountControl.value <= 0" class="text-danger">Enter Valid Amount</span>
+      </div>
+      <div class="form-group">
+        <label for="notes">Additional Notes</label>
+        <textarea
+          id="notes"
+          [(ngModel)]="formData.notes"
+          name="notes"
+          class="form-control"
+          rows="4"
+          #notesControl="ngModel"
+          required
+        ></textarea>
+        <span *ngIf="notesControl.touched && notesControl.invalid" class="text-danger">Notes is required</span>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="billForm.invalid">Submit</button>
+        <button
+          type="button"
+          class="btn btn-danger mt-3 "
+          (click)="closeDialog()"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Reimbursement History Section -->
+<div class="reimbursement-history">
+  <h1 class="bold text-center">Reimbursement History</h1>
+  <div class="benefit-cards-container">
+    <div *ngFor="let history of reimbursementHistory" class="card benefit-card">
+      <div class="card-body">
+        <h4 class="card-title">{{ history.id }}</h4>
+        <p class="card-text">
+          Amount: {{ history.amount | currency: 'INR' }}
+          <br />
+          Notes: {{ history.notes }}
+        </p>
+        <p class="card-text text-muted">
+          Date: {{ history.date }}
+        </p>
+        <div *ngIf="history.status" class="text-success">
+          <span [ngClass]="{
+            'text-success': history.status === 'Approve', 
+            'text-danger': history.status === 'Declined', 
+            'text-warning': history.status === 'Requested'
+          }">
+          Status: {{ history.status === 'Approve' ? 'Approved' : history.status }}
+        </span>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

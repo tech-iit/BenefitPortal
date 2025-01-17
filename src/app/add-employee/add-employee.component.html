@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div *ngIf="responseMessage" 
+        [ngClass]="{'success-message': responseStatus === true, 'error-message': responseStatus === false}" 
+        class="response-message">
+        {{ responseMessage }}
+    </div>
+    <!-- Registration Form -->
+    <div class="registration-form">
+        <form (ngSubmit)="onSubmit(employeeForm)" #employeeForm="ngForm">
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control item" 
+                    id="employeeId" 
+                    [(ngModel)]="employeeData.employeeId" 
+                    name="employeeId" 
+                    placeholder="SAP ID" 
+                    #employeeIdControl = "ngModel"
+                    required
+                >
+                <span *ngIf="beforeformsubmit&&employeeIdControl.touched && employeeIdControl.invalid" class="text-danger">Employee Id is required</span>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="password" 
+                    class="form-control item" 
+                    id="password" 
+                    [(ngModel)]="employeeData.password" 
+                    name="password" 
+                    placeholder="Password" 
+                    #passwordControl="ngModel"
+                    required
+                >
+                <span *ngIf="beforeformsubmit&&passwordControl.touched && passwordControl.invalid" class="text-danger">Password is required</span>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control item" 
+                    id="name" 
+                    [(ngModel)]="employeeData.name" 
+                    name="name" 
+                    placeholder="Name" 
+                    #nameControl = "ngModel"
+                    required
+                >
+                <span *ngIf="beforeformsubmit&&nameControl.touched && nameControl.invalid" class="text-danger">Employee Name is required</span>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="email" 
+                    class="form-control item" 
+                    id="email" 
+                    [(ngModel)]="employeeData.emailId" 
+                    name="email" 
+                    placeholder="Email Id" 
+                    #emailControl="ngModel"
+                    required
+                    >
+                    <span *ngIf="beforeformsubmit&&emailControl.touched && emailControl.invalid" class="text-danger">Enter Valid Email Id</span>
+            </div>
+            <div class="form-group">
+                <input 
+                    type="text" 
+                    class="form-control item" 
+                    id="contact" 
+                    [(ngModel)]="employeeData.contactNo" 
+                    name="contact" 
+                    placeholder="Contact No" 
+                    #contactNoControl="ngModel"
+                    required
+                >
+                <span *ngIf="beforeformsubmit&&contactNoControl.touched && contactNoControl.invalid" class="text-danger">Enter Valid Contact No</span>
+            </div>
+            <div class="form-group">
+                <select 
+                    id="Eligibility" 
+                    class="form-select form-control item" 
+                    [(ngModel)]="employeeData.band" 
+                    name="eligibility" 
+                    required
+                >
+                    <option value="" selected disabled>--Band--</option>
+                    <option>E0</option>
+                    <option>E1</option>
+                    <option>E2</option>
+                    <option>E3</option>
+                    <option>E4</option>
+                    <option>E5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-block create-account" 
+                [ngClass]="{'not-allowed': employeeForm.invalid}" [disabled]="employeeForm.invalid">Add Employee</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<app-footer></app-footer>

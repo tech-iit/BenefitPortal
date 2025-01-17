@@ -1,0 +1,68 @@
+<div class="view-bill-container">
+  <h3>Manage SSDs</h3>
+
+  <div class="product-listing">
+    <div *ngFor="let bill of bills" class="card benefit-card" (click)="openBillDialog(bill)">
+      <div class="card-body">
+        <h4 class="card-title">{{ bill.SSDId }}</h4>
+        <p class="card-text">
+          Status: 
+          <span 
+            class="badge" 
+            [ngClass]="{
+              'bg-success': bill.Status === 'Approve',
+              'bg-warning text-dark': bill.Status === 'Requested',
+              'bg-danger': bill.Status === 'Declined'
+            }"
+          >
+          {{ bill.Status === 'Approve' ? 'Approved' : bill.Status }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedBill" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+       <i>{{ selectedBill.SSDId }}</i>
+       <i>{{selectedBill.ReimbursementType}} SSD</i>
+        <button class="close-btn" (click)="closeBillDialog()">×</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>SAP ID:</strong> {{selectedBill.EmployeeId}}</p>
+        <p><strong>Title:</strong> {{ selectedBill.Title}}</p>
+        <p><strong>Description:</strong> {{ selectedBill.Description }}</p>
+        <p><strong>Date:</strong> {{ selectedBill.Date  | date:'dd/MM/yyyy hh:mm a' }}</p>
+        <p>
+          <strong>Status:</strong> 
+          <span 
+            class="badge" 
+            [ngClass]="{
+              'bg-success': selectedBill.Status === 'Approve',
+              'bg-warning text-dark': selectedBill.Status === 'Requested',
+              'bg-danger': selectedBill.Status === 'Declined'
+            }"
+          >
+          {{ selectedBill.Status === 'Approve' ? 'Approved' : selectedBill.Status }}
+          </span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button 
+          class="btn btn-success" 
+          [disabled]="selectedBill.Status !== 'Requested'" 
+          (click)="approveBill(selectedBill.SSDId)">
+          Approve
+        </button>
+        <button 
+          class="btn btn-danger" 
+          [disabled]="selectedBill.Status !== 'Requested'" 
+          (click)="declineBill(selectedBill.SSDId)">
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,193 @@
+/* Flexbox centering for benefit details */
+.parent-container {
+  background-color: #dee9ff;
+  height: 85vh;
+}
+
+.fullscreen-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.benefit-container {
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.benefit-description {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.gradient-line {
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  border-radius: 2px;
+}
+
+.availed-benefits {
+  margin-top: 0px;
+  padding: 0px 20px;
+  background-color: #dee9ff;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+/* Cards Container */
+.benefit-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 40px;
+}
+
+/* Benefit Card Above Availed Benefits (Wider Card) */
+.benefit-container .card {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 350px; /* Increased width for the benefit card above availed benefits */
+  height: 400px; /* Adjusted height to maintain balance */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.benefit-container .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image Styling (Fixed Size) for the First Benefit Card */
+.benefit-container .card img {
+  width: 200px; /* Adjusted image width for the first card */
+  height: 200px; /* Adjusted image height for the first card */
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Card Body Styling for the First Benefit Card */
+.benefit-container .card-body {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+/* Title Styling */
+.benefit-container .card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Avail Benefit Button Styling */
+.benefit-container .btn {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+/* Benefit Description Styling */
+.benefit-description {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.gradient-line {
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  border-radius: 2px;
+}
+
+/* Availed Benefits Section Cards */
+.availed-benefits {
+  margin-top: 0px;
+  padding: 0px 20px;
+  background-color: #dee9ff;
+  position: relative;
+  padding-bottom: 100px;
+}
+
+/* Cards Container */
+.benefit-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 40px;
+}
+
+/* Individual Benefit Card for Availed Benefits */
+.benefit-card {
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 230px; /* Fixed width for the card */
+  height: 300px; /* Fixed height for the card */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image Styling (Fixed Size) for Availed Benefits Cards */
+.benefit-card img {
+  width: 150px; /* Smaller fixed width for the image */
+  height: 150px; /* Smaller fixed height for the image */
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Card Body Styling for Availed Benefits Cards */
+.benefit-card .card-body {
+  padding: 10px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Text and Button Styling inside Availed Benefits Cards */
+.benefit-card i,
+.benefit-card .card-title,
+.benefit-card .card-text {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Card Styling */
+.card {
+  max-height: 300px;
+  max-width: 250px; /* Increased width for the first benefit card */
+}
+
+.card img {
+  max-height: 150px;
+  object-fit: cover;
+}
