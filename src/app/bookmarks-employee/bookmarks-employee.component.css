@@ -273,6 +273,10 @@
   font-weight: 600;
 }
 
+.bookmark-icon{
+  height: 20px;
+}
+
 /* Responsive behavior */
 @media (max-width: 768px) {
   .category-image {

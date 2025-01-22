@@ -368,3 +368,7 @@ body{
 .subscribe-button:hover {
   background-color: #0056b3;
 }
+
+.bookmark-icon{
+  height: 20px;
+}

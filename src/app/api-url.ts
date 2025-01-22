@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiBaseUrl: 'http://localhost:61298' // Your local backend URL
+    apiBaseUrl: 'https://benefitportalwebapp-c3bgdkgmdjfthefq.centralindia-01.azurewebsites.net' 
   };
   

@@ -33,10 +33,11 @@
                   class="btn p-0 border-0 bg-transparent"
                   (click)="toggleBookmark(x.Id)"
                 >
-                  <i
-                    class="bi"
-                    [ngClass]="x.IsBookmarked ? 'bi-heart-fill text-danger' : 'bi-heart text-secondary'"
-                  ></i>
+                <img
+                [src]="x.IsBookmarked ? image1 : image2"
+                [alt]="x.IsBookmarked ? 'Bookmarked' : 'Not Bookmarked'"
+                class="bookmark-icon"
+              />
                 </button>
                 <!-- Pop-up message -->
                 <div

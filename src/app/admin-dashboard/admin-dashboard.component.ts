@@ -10,6 +10,8 @@ import { environment } from '../api-url';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  image1='assets/bookmark.png';
+  image2='assets/unbookmark.png';
   apibaseurl= environment.apiBaseUrl;
   showMessage: boolean = false;
   cards: { 
