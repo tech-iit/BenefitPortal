@@ -1,69 +1,75 @@
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <a style="margin-left: 10px" class="navbar-brand" routerLink="employee-dashboard">Employee Dashboard</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <a style="margin-left: 10px" class="navbar-brand" routerLink="employee-dashboard">
+    Employee Dashboard
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-          <div class="container-fluid">
-              <ul class="navbar-nav me-auto">
-                  <li class="nav-item" routerLinkActive="active">
-                      <a routerLink="bookmarks-employee" class="nav-link">
-                          <i class="fas fa-user-plus"></i> Bookmarks
-                      </a>
-                  </li>
-                  <li class="nav-item" routerLinkActive="active">
-                      <a routerLink="feedback" class="nav-link">
-                          <i class="fas fa-gift"></i> Feedback
-                      </a>
-                  </li>
-                  <li class="nav-item" routerLinkActive="active">
-                      <a class="nav-link" routerLink="raiseSSD">
-                          <i class="fas fa-bookmark"></i> Raise SSD
-                      </a>
-                  </li>
-                  <li class="nav-item" routerLinkActive="active">
-                    <a class="nav-link" routerLink="bill">
-                        <i class="fas fa-hdd"></i> Bill
-                    </a>
-                </li>
-              </ul>
-              <ul class="navbar-nav">
-                <!-- User Dropdown -->
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="userDropdown"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <i class="fas fa-user-circle"></i> profile
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <li class="dropdown-item d-flex justify-content-center">{{name}}</li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li class="dropdown-item d-flex justify-content-center">{{userId}}</li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li class="dropdown-item d-flex justify-content-center">{{emailId}}</li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item logout-link d-flex justify-content-center " (click)="logout()"><img src="assets/user-logout.png" alt="logout" width="30" height="40"></a>
-                    </li>
-                  </ul>
-                </li>                
-              </ul>
-          </div>
-      </nav>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="bookmarks-employee" class="nav-link">
+          <i class="fas fa-user-plus"></i> Bookmarks
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a routerLink="feedback" class="nav-link">
+          <i class="fas fa-gift"></i> Feedback
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="raiseSSD">
+          <i class="fas fa-bookmark"></i> Raise SSD
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="bill">
+          <i class="fas fa-hdd"></i> Bill
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <!-- User Dropdown -->
+      <li class="nav-item dropdown">
+        <span
+          class="nav-link dropdown-toggle"
+          id="userDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <i class="fas fa-user-circle"></i> Profile
+        </span>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li class="dropdown-item d-flex justify-content-center">{{ name }}</li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li class="dropdown-item d-flex justify-content-center">{{ userId }}</li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li class="dropdown-item d-flex justify-content-center">{{ emailId }}</li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <button class="dropdown-item logout-link d-flex justify-content-center" (click)="logout()">
+              <img src="assets/user-logout.png" alt="logout" width="30" height="40" />
+            </button>
+          </li>
+        </ul>
+      </li>
+      
+    </ul>
   </div>
 </nav>
-
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

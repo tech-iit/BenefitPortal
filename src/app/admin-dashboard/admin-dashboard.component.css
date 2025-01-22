@@ -335,40 +335,109 @@ body{
 
 .subscribe-content {
   background: url('/assets/sub.jpg');
-  width: 50%;
+  background-size: cover;
+  background-position: center;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   padding: 50px;
+  width: 50%;
+  max-width: 800px;
 }
 
 .subscribe-input {
   width: 50%;
-  max-width: 600px;
+  max-width: 400px;
   padding: 10px;
   font-size: 16px;
   border: 2px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
+  margin-right: 10px; /* Add horizontal space between input and button */
 }
 
 .subscribe-button {
-  margin-left: 10px;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 16px;
   color: white;
   background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 10px; /* Adds space when buttons stack vertically */
 }
 
 .subscribe-button:hover {
   background-color: #0056b3;
 }
 
+/* Flexbox for row alignment */
+.subscribe-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Ensures consistent gap between elements */
+  flex-wrap: wrap; /* Wrap elements for smaller screens */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .subscribe-content {
+    flex-direction: column; /* Stack input and buttons */
+    gap: 15px;
+    width: 70%;
+    padding: 40px;
+  }
+
+  .subscribe-input {
+    width: 100%; /* Full width for smaller screens */
+    font-size: 14px;
+    margin-right: 0; /* Remove extra spacing in column layout */
+  }
+
+  .subscribe-button {
+    width: 100%; /* Full width for buttons */
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscribe-content {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .subscribe-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .subscribe-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+
 .bookmark-icon{
   height: 20px;
 }
+
+
+.footer {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer p {
+    margin: 0;
+  }

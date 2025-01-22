@@ -155,3 +155,25 @@ background-color: rgb(208, 7, 7);  /* Red for error */
 .registration-form form:valid button[type="submit"]:hover {
     cursor: pointer;
 }
+
+
+.bookmark-icon{
+    height: 45px;
+    padding-bottom: 5px;
+}
+
+
+
+.footer {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .footer p {
+      margin: 0;
+    }
