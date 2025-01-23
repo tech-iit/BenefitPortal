@@ -1,3 +1,11 @@
+<div *ngIf="isSmallScreen; else desktopView" class="small-screen-message">
+    <p>Please enter desktop mode for a better experience.</p>
+  </div>
+  
+  <ng-template #desktopView>
+
 <app-navbar *ngIf="role=='Admin'"></app-navbar>
 <app-navbar-employee *ngIf="role=='Employee'"></app-navbar-employee>
 <router-outlet></router-outlet>
+
+</ng-template>

@@ -1,0 +1,15 @@
+.small-screen-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8d7da;
+    color: #721c24;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .app-content {
+    padding: 20px;
+  }
+  

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,9 +10,13 @@ export class AppComponent implements OnInit {
   title = 'BenefitPortal';
   role: string = ''; // Role will determine what navbar to show
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {}
-
+  constructor(private router: Router, private cdr: ChangeDetectorRef,private breakpointObserver: BreakpointObserver) {}
+  isSmallScreen: boolean = false;
   ngOnInit() {
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Handset])
+    .subscribe(result => {
+      this.isSmallScreen = result.matches;
+    });
     // Initial check for user data in localStorage
     this.checkUserData();
 
@@ -40,4 +44,7 @@ export class AppComponent implements OnInit {
       this.cdr.detectChanges(); // Ensure Angular detects the change
     }
   }
+
+
+  
 }
