@@ -12,6 +12,9 @@ interface ApiResponse {
   styleUrls: ['./add-benefit.component.css']
 })
 export class AddBenefitComponent {
+  
+  selectedFile: File | null = null;
+  imageUrl: string | null = null;
   beforeformsubmit=true;
   apibaseurl = environment.apiBaseUrl;
   benefitData = {
@@ -43,7 +46,7 @@ export class AddBenefitComponent {
         adminId: this.adminId,
         name: this.benefitData.name,
         description: this.benefitData.description,
-        imagepath: this.benefitData.imagePath,
+        imagepath: this.imageUrl,
         category: this.benefitData.category,
         eligibility: this.benefitData.eligibility
       };
@@ -102,4 +105,40 @@ export class AddBenefitComponent {
       console.error('Form is invalid');
     }
   }
-}
+
+
+  // Replace with your backend API URL
+  private apiUrl = 'https://benefitportalwebapp-c3bgdkgmdjfthefq.centralindia-01.azurewebsites.net/hello/image/UploadImage';
+
+
+  // Handle file selection
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      this.uploadImage(); // Automatically upload when file is selected
+    }
+  }
+
+  // Upload the selected image to the backend
+  uploadImage(): void {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+  
+      this.http.post(this.apiUrl, formData)
+        .subscribe(
+          (response: any) => {
+            if (response.success) {
+              this.imageUrl = response.imageUrl; // The image URL returned by backend
+            } else {
+              console.error(response.message);
+            }
+          },
+          (error) => {
+            console.error('Error uploading image', error);
+          }
+        );
+    }
+  }
+}  
+

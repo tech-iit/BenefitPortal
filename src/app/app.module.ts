@@ -26,6 +26,7 @@ import { AuthGuard } from './auth.guard';
 import { employeeauth } from './employeeauth.guard';
 import { AccessGuard } from './access.guard';
 import { RestrictedComponent } from './restricted/restricted.component';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
 const routesArray:Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },  // Default route
   {path:'login', component: LoginComponent},
@@ -63,7 +64,8 @@ const routesArray:Routes = [
     FooterComponent,
     BillComponent,
     AdminBillsComponent,
-    RestrictedComponent
+    RestrictedComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
