@@ -47,9 +47,10 @@
                 >
                   Bookmarked!
                 </div>
+                
               </div>
             </div>
-           
+            <div class="benefit-bottom">
               <button [routerLink]="'/benefitdetails'"
               [queryParams]="{
                 id: x.Id,
@@ -57,7 +58,10 @@
                 path: x.ImagePath,
                 name:x.Name
               }" class="btn btn-primary w-100 mt-2" (click)="commonService()">View Benefit</button>
-         
+            <div class="delete-benefit">
+              <button type="button" class="btn btn-danger w-auto mt-2" (click)="deletebenefit(x.Id)"><img src={{deleteimageicon}} height="20px" width="50px"></button>
+            </div>
+          </div>
           </div>
         </div>
       </div>

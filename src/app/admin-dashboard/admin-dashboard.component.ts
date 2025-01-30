@@ -10,6 +10,7 @@ import { environment } from '../api-url';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  deleteimageicon='assets/delete.png';
   image1='assets/bookmark.png';
   image2='assets/unbookmark.png';
   apibaseurl= environment.apiBaseUrl;
@@ -44,6 +45,7 @@ export class AdminDashboardComponent implements OnInit {
     private accessControl: AccessControlService
   ) {}
  
+  userIdddelete:any;
  emailid:any='';
   ngOnInit(): void {
 
@@ -52,6 +54,7 @@ export class AdminDashboardComponent implements OnInit {
       const { userId } = JSON.parse(storedUserData);
       const {emailId} = JSON.parse(storedUserData);
       const {name}=JSON.parse(storedUserData);
+      this.userIdddelete=userId;
       this.emailid=emailId;
       if (userId) {
         this.loadBenefits(userId);
@@ -205,5 +208,22 @@ export class AdminDashboardComponent implements OnInit {
 }
  commonService(){
   this.accessControl.setAccess(true);
+ }
+ deletebenefit(BenefitId:number){
+  const apiUrl = `${this.apibaseurl}/api/auth/DeleteBenefit`;
+  this.http.post(apiUrl, {BenefitId }).subscribe(
+    (response: any) => {
+      console.log(response);
+      if(response.status){
+        this.loadBenefits(this.userIdddelete);
+        this.showSnackbar('Benefit Deleted!!!!!', 'success');
+      }else{
+        this.showSnackbar('Benefit Not Deleted!!!!!', 'success');
+      }
+      console.log(response);
+    },(error)=>{
+        console.log(error);
+    }
+  );
  }
 }

@@ -16,6 +16,7 @@ export class AdminBillsComponent implements OnInit {
     Status: string;
     ReimbursementType: string;
     Date:Date;
+    BillResponse:string
   }[] = []; 
 
   selectedBill: any = null; 
@@ -65,10 +66,12 @@ export class AdminBillsComponent implements OnInit {
     }, 100); 
   }
 
+  responseText:string='';
   updateReimbursementStatus(reimbursementId: number, status: string): void {
     const payload = {
       reimbursementId: reimbursementId,
-      status: status
+      status: status,
+      responseByadmin:this.responseText
     };
 
     this.http.post(`${this.apiUrl}/UpdateReimbursementStatus`, payload)

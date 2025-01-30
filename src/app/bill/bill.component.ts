@@ -36,6 +36,7 @@ export class BillComponent implements OnInit {
       notes: string;
       status: string;
       date: string;  // We will manually generate date as string
+      response:string;
     }[] = [];
   
     employeeId: string = '';
@@ -85,7 +86,8 @@ export class BillComponent implements OnInit {
               amount: this.formData.amount,
               notes: this.formData.notes,
               status: 'Requested', // Set the status to 'Requested'
-              date: new Date().toLocaleDateString()  // Add current date when submitting form
+              date: new Date().toLocaleDateString() , // Add current date when submitting form
+              response: ''
             });
            
             this.selectedBenefit.status = 'Requested'; // Update status to 'Requested'
@@ -96,7 +98,7 @@ export class BillComponent implements OnInit {
           });
       }
     }
-  
+
     fetchReimbursementHistory(): void {
       if (this.employeeId) {
         this.http.get<any[]>(`${this.apibaseurl}/api/reimbursement/GetReimbursements/${this.employeeId}`)
@@ -107,9 +109,11 @@ export class BillComponent implements OnInit {
               amount: item.Amount,  // Mapping to Amount
               notes: item.Notes,  // Mapping to Notes
               status: item.Status,  // Mapping to Status
-              date: new Date().toLocaleDateString()  // Manually adding current date as string
+              date: new Date().toLocaleDateString(),
+              response: item.BillResponse,
             }));
-  
+           
+            
             // After fetching, update the status of reimbursements
             this.updateReimbursementStatus();
           }, error => {

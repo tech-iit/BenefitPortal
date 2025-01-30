@@ -29,11 +29,16 @@
        <i>{{selectedBill.ReimbursementType}} Bill</i>
         <button class="close-btn" (click)="closeBillDialog()">×</button>
       </div>
+   
+     
+
       <div class="modal-body">
         <p><strong>SAP ID:</strong> {{selectedBill.EmployeeId}}</p>
         <p><strong>Amount:</strong> {{ selectedBill.Amount | currency: 'INR' }}</p>
         <p><strong>Notes:</strong> {{ selectedBill.Notes }}</p>
         <p><strong>Date:</strong> {{ selectedBill.Date  | date:'dd/MM/yyyy hh:mm a' }}</p>
+
+        <p *ngIf="selectedBill.Status!='Requested'"><strong>Response:</strong> {{ selectedBill.BillResponse}}</p>
         <p>
           <strong>Status:</strong> 
           <span 
@@ -47,6 +52,10 @@
           {{ selectedBill.Status === 'Approve' ? 'Approved' : selectedBill.Status }}
           </span>
         </p>
+      </div>
+      <div *ngIf="selectedBill.Status == 'Requested'">
+        <strong>Remark:</strong> 
+        <input class="form-control" type="text" id="response" name="response" [(ngModel)]="responseText"/>
       </div>
       <div class="modal-footer">
         <button 

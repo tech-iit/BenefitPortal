@@ -441,3 +441,9 @@ body{
   .footer p {
     margin: 0;
   }
+
+  .benefit-bottom{
+    min-width: inherit;
+    display: flex;
+    gap: 10px;
+  }
