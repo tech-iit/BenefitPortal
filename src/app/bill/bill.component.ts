@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../api-url';
 @Component({
   selector: 'app-bill',
@@ -41,7 +42,7 @@ export class BillComponent implements OnInit {
   
     employeeId: string = '';
   
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,private snackBar: MatSnackBar) {}
   
     ngOnInit(): void {
       
@@ -92,6 +93,7 @@ export class BillComponent implements OnInit {
            
             this.selectedBenefit.status = 'Requested'; // Update status to 'Requested'
             this.closeDialog();
+            this.showSnackbar('Reimbursement submitted!!!!!', 'success');
             console.log('Reimbursement submitted:', response);
           }, error => {
             console.error('Error submitting reimbursement:', error);
@@ -113,6 +115,7 @@ export class BillComponent implements OnInit {
               response: item.BillResponse,
             }));
            
+            // this.reimbursementHistory= this.reimbursementHistory.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
             
             // After fetching, update the status of reimbursements
             this.updateReimbursementStatus();
@@ -151,5 +154,12 @@ export class BillComponent implements OnInit {
       }
       console.log(`${benefitType} status set to Pending.`);
     }
+
+    private showSnackbar(message: string, type: 'success' | 'error'): void {
+      this.snackBar.open(message, 'Close', {
+        duration: 3000,
+        panelClass: type === 'success' ? 'snackbar-success' : 'snackbar-error',
+      });
+  }
   }
   

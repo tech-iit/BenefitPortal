@@ -3,7 +3,7 @@
   <div class="card">
     <img [src]="cellPhoneBill.path" class="card-img-top" />
     <div class="card-body">
-      <h3 class="card-title text-center">{{ cellPhoneBill.id }}</h3>
+      <h3 class="card-title text-center">Id:{{ cellPhoneBill.id }}</h3>
       <p class="card-text text-center">{{ cellPhoneBill.description }}</p>
       <div class="text-center">
         <button 
@@ -28,7 +28,7 @@
   <div class="card mt-3">
     <img [src]="wifiReimbursement.path" class="card-img-top" />
     <div class="card-body">
-      <h3 class="card-title text-center">{{ wifiReimbursement.id }}</h3>
+      <h3 class="card-title text-center">Id:{{ wifiReimbursement.id }}</h3>
       <p class="card-text text-center">{{ wifiReimbursement.description }}</p>
       <div class="text-center">
         <button 
@@ -53,7 +53,7 @@
 <!-- Dialog Box for Form -->
 <div class="dialog-overlay" *ngIf="dialogVisible">
   <div class="dialog-box">
-    <h3 class="text-center">{{ selectedBenefit.id }} Reimbursement Form</h3>
+    <h3 class="text-center">Id:{{ selectedBenefit.id }} Reimbursement Form</h3>
     <form #billForm="ngForm" (ngSubmit)="submitForm(billForm)" novalidate>
       <div class="form-group">
         <label for="amount">Reimbursement Amount</label>

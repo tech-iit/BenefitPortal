@@ -23,7 +23,7 @@
     <h3 class="text-center">Availed Benefits</h3>
     <div class="benefit-cards-container">
       <div *ngFor="let availedBenefit of availedBenefits" class="card benefit-card">
-        <i>Benefit Id:{{ availedBenefit.id }}</i>
+        <i>Id:{{ availedBenefit.id }}</i>
         <i class="text-center">{{ availedBenefit.name + '\n' }}</i>
         <img
           [src]="availedBenefit.path"

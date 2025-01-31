@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../api-url';
 @Component({
   selector: 'app-admin-bills',
@@ -22,7 +23,7 @@ export class AdminBillsComponent implements OnInit {
   selectedBill: any = null; 
   apiUrl = `${this.apibaseurl}/api/admin/reimbursement`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.fetchReimbursements();
@@ -33,7 +34,8 @@ export class AdminBillsComponent implements OnInit {
     this.http.get<any[]>(`${this.apiUrl}/GetAllReimbursements`)
       .subscribe(
         response => {
-          this.bills = response;
+          // this.bills = response;
+         this.bills= response.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
         },
         error => {
           console.error('Error fetching reimbursements:', error);
@@ -78,6 +80,7 @@ export class AdminBillsComponent implements OnInit {
       .subscribe(
         response => {
           console.log('Status updated successfully:', response);
+          this.showSnackbar('Status updated successfully!!!!', 'success');
           this.fetchReimbursements(); 
         },
         error => {
@@ -85,4 +88,10 @@ export class AdminBillsComponent implements OnInit {
         }
       );
   }
+  private showSnackbar(message: string, type: 'success' | 'error'): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: type === 'success' ? 'snackbar-success' : 'snackbar-error',
+    });
+}
 }

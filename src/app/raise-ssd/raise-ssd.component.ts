@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../api-url';
 @Component({
   selector: 'app-raise-ssd',
@@ -13,7 +14,7 @@ export class RaiseSsdComponent  implements OnInit {
   ssdHistory: any[] = [];
   private apiUrl = `${this.apibaseurl}/api/ssd`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private snackBar: MatSnackBar) { }
 
   employeeId: string = '';
   
@@ -37,6 +38,7 @@ export class RaiseSsdComponent  implements OnInit {
 
     this.http.post(`${this.apiUrl}/RaiseSSD`, ssdData).subscribe(response => {
       console.log(response); 
+      this.showSnackbar('SSD raised!!!!!', 'success');
       this.getSsdHistory();
     }, error => {
       console.error('Error raising SSD:', error);
@@ -46,9 +48,16 @@ export class RaiseSsdComponent  implements OnInit {
   getSsdHistory(): void {
     this.http.post<any[]>(`${this.apiUrl}/GetSSDHistoryByEmployeeId`, { EmployeeId: this.employeeId })
       .subscribe(history => {
-        this.ssdHistory = history;
+        // this.ssdHistory = history;
+        this.ssdHistory= history.sort((a, b) => new Date(b.Date).getTime() - new Date(a.Date).getTime());
       }, error => {
         console.error('Error fetching SSD history:', error);
       });
   }
+  private showSnackbar(message: string, type: 'success' | 'error'): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: type === 'success' ? 'snackbar-success' : 'snackbar-error',
+    });
+}
 }

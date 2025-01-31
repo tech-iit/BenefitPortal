@@ -4,7 +4,7 @@
   <div class="product-listing">
     <div *ngFor="let bill of bills" class="card benefit-card" (click)="openBillDialog(bill)">
       <div class="card-body">
-        <h4 class="card-title">{{ bill.ReimbursementId }}</h4>
+        <h4 class="card-title">Id:{{ bill.ReimbursementId }}</h4>
         <p class="card-text">
           Status: 
           <span 
@@ -25,7 +25,7 @@
   <div *ngIf="selectedBill" class="modal-overlay">
     <div class="modal-content">
       <div class="modal-header">
-       <i>{{ selectedBill.ReimbursementId }}</i>
+       <i>Id:{{ selectedBill.ReimbursementId }}</i>
        <i>{{selectedBill.ReimbursementType}} Bill</i>
         <button class="close-btn" (click)="closeBillDialog()">×</button>
       </div>
